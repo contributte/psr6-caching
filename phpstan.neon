@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		# Intentional, typehint is defined in phpdoc only
+		- message: '#^Instanceof between DateTimeInterface and DateTimeInterface will always evaluate to true\.$#'
+		  path: %currentWorkingDirectory%/src/CacheItem.php
+
+		- message: '#^Call to function is_int\(\) with int will always evaluate to true\.$#'
+		  path: %currentWorkingDirectory%/src/CacheItem.php
+
+		- message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+		  path: %currentWorkingDirectory%/src/CachePool.php
