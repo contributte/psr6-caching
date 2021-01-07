@@ -18,11 +18,11 @@
   ],
   "require": {
     "php": ">=7.2.0",
-    "nette/caching": "~3.0.0",
+    "nette/caching": "^3.0.0",
     "psr/cache": "^1.0.0"
   },
   "require-dev": {
-    "nette/di": "~3.0.0",
+    "nette/di": "^3.0.0",
     "ninjify/qa": "^0.9.0",
     "phpstan/extension-installer": "^1.0.0",
     "phpstan/phpstan-deprecation-rules": "^0.11.0",
