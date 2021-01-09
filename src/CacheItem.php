@@ -54,7 +54,7 @@ class CacheItem implements CacheItemInterface
 	}
 
 	/**
-	 * @param DateTimeInterface|null $expiration
+	 * @param DateTimeInterface|mixed|null $expiration
 	 * @return static
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
@@ -78,7 +78,7 @@ class CacheItem implements CacheItemInterface
 	}
 
 	/**
-	 * @param int|DateInterval|null $time
+	 * @param int|DateInterval|mixed|null $time
 	 * @return static
 	 */
 	public function expiresAfter($time): self

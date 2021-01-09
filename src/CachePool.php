@@ -24,7 +24,7 @@ class CachePool implements CacheItemPoolInterface
 		$this->internal = $cache;
 
 		$this->createItem = Closure::bind(
-			static function (string $key, $value) {
+			static function (string $key, $value): CacheItem {
 				$item = new CacheItem();
 				$item->key = $key;
 				$item->value = $value;
