@@ -22,8 +22,8 @@
 
 To install the latest version of `contributte/psr6-caching` use [Composer](https://getcomposer.org).
 
-```
-$ composer require contributte/psr6-caching
+```bash
+composer require contributte/psr6-caching
 ```
 ## Documentation
 
