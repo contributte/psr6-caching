@@ -22,7 +22,7 @@
 
 To install the latest version of `contributte/psr6-caching` use [Composer](https://getcomposer.com).
 
-```
+```bash
 composer require contributte/psr6-caching
 ```
 ## Documentation
