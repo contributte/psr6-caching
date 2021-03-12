@@ -17,9 +17,9 @@ composer require contributte/psr6-caching
 
 Register extension
 
-```yaml
+```neon
 extensions:
-  psr6: Contributte\Psr6\DI\Psr6CachingExtension
+	psr6: Contributte\Psr6\DI\Psr6CachingExtension
 ```
 
 ## Usage
@@ -32,17 +32,17 @@ use Contributte\Psr6\ICachePoolFactory;
 class MyClass
 {
 
-    /** @var ICachePoolFactory */
-    private $cachePoolFactory;
-    
-    public function __construct(ICachePoolFactory $cachePoolFactory) {
-        $this->cachePoolFactory = $cachePoolFactory;
-    }
-    
-    private function doSomething(): void 
-    {
-    	$cachePool = $this->cachePoolFactory->create('namespace');
-    }
+	/** @var ICachePoolFactory */
+	private $cachePoolFactory;
+
+	public function __construct(ICachePoolFactory $cachePoolFactory) {
+		$this->cachePoolFactory = $cachePoolFactory;
+	}
+
+	private function doSomething(): void
+	{
+		$cachePool = $this->cachePoolFactory->create('namespace');
+	}
 
 }
 ```
