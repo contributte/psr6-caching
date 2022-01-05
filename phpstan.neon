@@ -6,5 +6,9 @@ includes:
 
 parameters:
 	ignoreErrors:
-		- message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
-		  path: %currentWorkingDirectory%/src/CachePool.php
+		-
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			path: %currentWorkingDirectory%/src/CachePool.php
+		-
+			message: '#Property Contributte\\Psr6\\CacheItem::\$(.*) is never written, only read\.#'
+			path:  %currentWorkingDirectory%/src/CacheItem.php
