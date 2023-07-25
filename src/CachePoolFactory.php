@@ -3,16 +3,15 @@
 namespace Contributte\Psr6;
 
 use Nette\Caching\Cache;
-use Nette\Caching\IStorage;
+use Nette\Caching\Storage;
 use Psr\Cache\CacheItemPoolInterface;
 
 class CachePoolFactory implements ICachePoolFactory
 {
 
-	/** @var IStorage */
-	private $storage;
+	private Storage $storage;
 
-	public function __construct(IStorage $storage)
+	public function __construct(Storage $storage)
 	{
 		$this->storage = $storage;
 	}

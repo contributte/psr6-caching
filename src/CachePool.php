@@ -13,11 +13,9 @@ use Throwable;
 class CachePool implements CacheItemPoolInterface
 {
 
-	/** @var Cache */
-	protected $internal;
+	protected Cache $internal;
 
-	/** @var Closure */
-	protected $createItem;
+	protected Closure $createItem;
 
 	public function __construct(Cache $cache)
 	{
@@ -38,10 +36,9 @@ class CachePool implements CacheItemPoolInterface
 	}
 
 	/**
-	 * @param string $key
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
-	public function getItem($key): CacheItemInterface
+	public function getItem(string $key): CacheItemInterface
 	{
 		self::assertKey($key);
 
@@ -70,10 +67,9 @@ class CachePool implements CacheItemPoolInterface
 	}
 
 	/**
-	 * @param string $key
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
-	public function hasItem($key): bool
+	public function hasItem(string $key): bool
 	{
 		return $this->getItem($key)->isHit();
 	}
@@ -81,7 +77,7 @@ class CachePool implements CacheItemPoolInterface
 	public function clear(): bool
 	{
 		try {
-			$this->internal->clean([Cache::ALL]);
+			$this->internal->clean([Cache::All]);
 		} catch (Throwable $e) {
 			throw new CacheException($e->getMessage(), $e->getCode(), $e);
 		}
@@ -90,10 +86,9 @@ class CachePool implements CacheItemPoolInterface
 	}
 
 	/**
-	 * @param string $key
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
-	public function deleteItem($key): bool
+	public function deleteItem(string $key): bool
 	{
 		return $this->deleteItems([$key]);
 	}
@@ -149,7 +144,7 @@ class CachePool implements CacheItemPoolInterface
 		return true;
 	}
 
-	private static function assertKey(string $key): void
+	private static function assertKey(mixed $key): void
 	{
 		if (!is_string($key)) {
 			throw new InvalidArgumentException(

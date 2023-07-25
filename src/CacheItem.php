@@ -2,7 +2,6 @@
 
 namespace Contributte\Psr6;
 
-use Contributte\Psr6\Exception\InvalidArgumentException;
 use DateInterval;
 use DateTimeImmutable;
 use DateTimeInterface;
@@ -12,14 +11,11 @@ use Psr\Cache\CacheItemInterface;
 class CacheItem implements CacheItemInterface
 {
 
-	/** @var string */
-	private $key;
+	private string $key;
 
-	/** @var mixed */
-	private $value;
+	private mixed $value;
 
-	/** @var bool */
-	private $hit;
+	private bool $hit;
 
 	/** @var mixed[] */
 	protected $dependencies = [];
@@ -29,10 +25,7 @@ class CacheItem implements CacheItemInterface
 		return $this->key;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function get()
+	public function get(): mixed
 	{
 		return $this->value;
 	}
@@ -42,11 +35,7 @@ class CacheItem implements CacheItemInterface
 		return $this->hit;
 	}
 
-	/**
-	 * @param mixed $value
-	 * @return static
-	 */
-	public function set($value): self
+	public function set(mixed $value): static
 	{
 		$this->value = $value;
 
@@ -54,37 +43,30 @@ class CacheItem implements CacheItemInterface
 	}
 
 	/**
-	 * @param DateTimeInterface|mixed|null $expiration
-	 * @return static
+	 * @param DateTimeInterface|null $expiration
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
-	public function expiresAt($expiration): self
+	public function expiresAt(?DateTimeInterface $expiration): static
 	{
 		if ($expiration === null) {
-			$this->dependencies[Cache::EXPIRE] = null;
+			$this->dependencies[Cache::Expire] = null;
 
 			return $this;
 		}
 
-		if ($expiration instanceof DateTimeInterface) {
-			$this->dependencies[Cache::EXPIRE] = $expiration->format('U.u');
+		$this->dependencies[Cache::Expire] = $expiration->format('U.u');
 
-			return $this;
-		}
-
-		throw new InvalidArgumentException(
-			sprintf('Invalid type "%s" for $expiration', gettype($expiration))
-		);
+		return $this;
 	}
 
 	/**
-	 * @param int|DateInterval|mixed|null $time
+	 * @param int|DateInterval|null $time
 	 * @return static
 	 */
-	public function expiresAfter($time): self
+	public function expiresAfter(int|DateInterval |null $time): static
 	{
 		if ($time === null) {
-			$this->dependencies[Cache::EXPIRE] = null;
+			$this->dependencies[Cache::Expire] = null;
 
 			return $this;
 		}
@@ -92,25 +74,19 @@ class CacheItem implements CacheItemInterface
 		if ($time instanceof DateInterval) {
 			/** @var DateTimeImmutable $date */
 			$date = DateTimeImmutable::createFromFormat('U', (string) time());
-			$this->dependencies[Cache::EXPIRE] = $date->add($time)->format('U');
+			$this->dependencies[Cache::Expire] = $date->add($time)->format('U');
 
 			return $this;
 		}
 
-		if (is_int($time)) {
-			$this->dependencies[Cache::EXPIRE] = $time + time();
+		$this->dependencies[Cache::Expire] = $time + time();
 
-			// Infinite
-			if ($time === 0) {
-				unset($this->dependencies[Cache::EXPIRE]);
-			}
-
-			return $this;
+		// Infinite
+		if ($time === 0) {
+			unset($this->dependencies[Cache::Expire]);
 		}
 
-		throw new InvalidArgumentException(
-			sprintf('Invalid type "%s" for $time', gettype($time))
-		);
+		return $this;
 	}
 
 	/**
