@@ -11,14 +11,14 @@ use Psr\Cache\CacheItemInterface;
 class CacheItem implements CacheItemInterface
 {
 
-	private string $key;
-
-	private mixed $value;
-
-	private bool $hit;
-
 	/** @var mixed[] */
-	protected $dependencies = [];
+	protected array $dependencies = [];
+
+	protected string $key;
+
+	protected mixed $value;
+
+	protected bool $hit;
 
 	public function getKey(): string
 	{
@@ -43,7 +43,6 @@ class CacheItem implements CacheItemInterface
 	}
 
 	/**
-	 * @param DateTimeInterface|null $expiration
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
 	public function expiresAt(?DateTimeInterface $expiration): static
@@ -60,10 +59,9 @@ class CacheItem implements CacheItemInterface
 	}
 
 	/**
-	 * @param int|DateInterval|null $time
 	 * @return static
 	 */
-	public function expiresAfter(int|DateInterval |null $time): static
+	public function expiresAfter(int|DateInterval|null $time): static
 	{
 		if ($time === null) {
 			$this->dependencies[Cache::Expire] = null;

@@ -115,7 +115,7 @@ class CachePool implements CacheItemPoolInterface
 	{
 		if (!($item instanceof CacheItem)) {
 			throw new InvalidArgumentException(
-				sprintf('Invalid type "%s" for $item', get_class($item))
+				sprintf('Invalid type "%s" for $item', $item::class)
 			);
 		}
 
