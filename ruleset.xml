@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset>
+<ruleset name="Contributte">
 	<rule ref="./vendor/contributte/qa/ruleset.xml"/>
 
 	<!-- Package specific rules -->
