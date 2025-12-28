@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Tests\Contributte\Psr6\Unit\DI;
+namespace Tests\Cases\DI;
 
 use Contributte\Psr6\CachePoolFactory;
 use Contributte\Psr6\DI\Psr6CachingExtension;

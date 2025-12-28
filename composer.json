@@ -38,7 +38,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\Contributte\\Psr6\\": "tests"
+      "Tests\\": "tests"
     }
   },
   "minimum-stability": "dev",
