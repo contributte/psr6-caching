@@ -18,16 +18,7 @@
     Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
 </p>
 
-## Usage
-
-To install the latest version of `contributte/psr6-caching` use [Composer](https://getcomposer.org).
-
-```bash
-composer require contributte/psr6-caching
-```
-## Documentation
-
-For details on how to use this package, check out our [documentation](.docs).
+PSR-6 (Caching Interface) adapter for [Nette Caching](https://github.com/nette/caching).
 
 ## Versions
 
@@ -35,6 +26,50 @@ For details on how to use this package, check out our [documentation](.docs).
 |-------------|---------|----------|-------|--------|
 | dev         | `^0.5`  | `master` | 3.3+  | `8.2+` |
 | stable      | `^0.4`  | `master` | 3.3+  | `8.2+` |
+
+## Installation
+
+To install the latest version of `contributte/psr6-caching` use [Composer](https://getcomposer.org).
+
+```bash
+composer require contributte/psr6-caching
+```
+
+## Setup
+
+Register extension:
+
+```neon
+extensions:
+	psr6: Contributte\Psr6\DI\Psr6CachingExtension
+```
+
+## Usage
+
+Get `ICachePoolFactory` from DI:
+
+```php
+use Contributte\Psr6\ICachePoolFactory;
+
+class MyClass
+{
+
+	/** @var ICachePoolFactory */
+	private $cachePoolFactory;
+
+	public function __construct(ICachePoolFactory $cachePoolFactory) {
+		$this->cachePoolFactory = $cachePoolFactory;
+	}
+
+	private function doSomething(): void
+	{
+		$cachePool = $this->cachePoolFactory->create('namespace');
+	}
+
+}
+```
+
+Rest is in [PSR-6 documentation](https://www.php-fig.org/psr/psr-6/).
 
 ## Development
 
