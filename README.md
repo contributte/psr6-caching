@@ -24,8 +24,8 @@ PSR-6 (Caching Interface) adapter for [Nette Caching](https://github.com/nette/c
 
 | State       | Version | Branch   | Nette | PHP    |
 |-------------|---------|----------|-------|--------|
-| dev         | `^0.5`  | `master` | 3.3+  | `8.2+` |
-| stable      | `^0.4`  | `master` | 3.3+  | `8.2+` |
+| dev         | `^0.5`  | `master` | 3.3+  | `>=8.2` |
+| stable      | `^0.4`  | `master` | 3.3+  | `>=8.2` |
 
 ## Installation
 
@@ -35,7 +35,7 @@ To install the latest version of `contributte/psr6-caching` use [Composer](https
 composer require contributte/psr6-caching
 ```
 
-## Setup
+## Configuration
 
 Register extension:
 
@@ -75,7 +75,7 @@ Rest is in [PSR-6 documentation](https://www.php-fig.org/psr/psr-6/).
 
 See [how to contribute](https://contributte.org/contributing.html) to this package.
 
-This package is currently maintaining by these authors.
+This package is currently maintained by these authors.
 
 <a href="https://github.com/vody105">
   <img width="80" height="80" src="https://avatars1.githubusercontent.com/u/22433893?v=4&s=80">
